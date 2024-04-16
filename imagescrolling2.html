@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Slider</title>
+<style>
+    #slider-container {
+        width: 300px; /* Adjust width as needed */
+        overflow: hidden; /* Hide overflow */
+        position: relative; /* Position relative for absolute positioning of arrows */
+    }
+    #slider {
+        white-space: nowrap; /* Keep all images in a single line */
+        transition: transform 0.3s ease; /* Smooth transition for sliding */
+    }
+    .slide {
+        display: inline-block; /* Display images in a row */
+        width: 300px; /* Adjust width as needed */
+    }
+    .arrow {
+        position: absolute; /* Position arrows */
+        top: 50%; /* Align vertically */
+        transform: translateY(-50%); /* Center vertically */
+        width: 30px; /* Adjust width as needed */
+        height: 30px; /* Adjust height as needed */
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        color: white; /* Text color */
+        cursor: pointer; /* Cursor pointer on hover */
+    }
+    .arrow.left {
+        left: 0; /* Left arrow positioned at left */
+    }
+    .arrow.right {
+        right: 0; /* Right arrow positioned at right */
+    }
+</style>
+</head>
+<body>
+
+<div id="slider-container">
+    <div id="slider">
+        <img class="slide" src="C:\Users\HP\OneDrive\htmlpratice\html\image folder\Screenshot 2023-09-17 203653.png" alt="Image 1">
+        <img class="slide" src="C:\Users\HP\OneDrive\htmlpratice\html\image folder\Screenshot 2024-01-31 133659.png" alt="Image 2">
+        <img class="slide" src="C:\Users\HP\OneDrive\htmlpratice\html\image folder\Screenshot 2024-03-04 161414.png" alt="Image 3">
+    </div>
+    <div class="arrow left" onclick="slideLeft()">&#10094;</div>
+    <div class="arrow right" onclick="slideRight()">&#10095;</div>
+</div>
+
+<script>
+    var currentSlide = 0;
+
+    function slideLeft() {
+        currentSlide = (currentSlide === 0) ? document.querySelectorAll('.slide').length - 1 : currentSlide - 1;
+        updateSlider();
+    }
+
+    function slideRight() {
+        currentSlide = (currentSlide === document.querySelectorAll('.slide').length - 1) ? 0 : currentSlide + 1;
+        updateSlider();
+    }
+
+    function updateSlider() {
+        var slider = document.getElementById('slider');
+        var slideWidth = document.querySelector('.slide').offsetWidth;
+        var offset = -currentSlide * slideWidth;
+        slider.style.transform = 'translateX(' + offset + 'px)';
+    }
+</script>
+
+</body>
+</html>

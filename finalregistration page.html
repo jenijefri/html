@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Registration Page</title>
+<style>
+  body {
+    font-family: Arial;
+    background-image:radial-gradient(circle,purple,lightgreen,violet);
+}
+  .container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 3px black;
+    border-radius: 20px;
+    transition: background-color 0.3s ease; /* Transition effect for background color */
+    background-color: violet;
+    position: relative;
+    box-shadow: 10px 10px 2px 3px gray;
+  background-color: violet;
+  }
+  
+  h1 {
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+    color: white;
+  text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+  font-style: italic;
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="date"]{
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 3px ;
+    border-radius: 5px;
+    box-sizing: border-box;
+    position:relative;
+  }
+  input[type="password"] {
+    position: relative;
+  }
+  #userData {
+    margin-top: 20px;
+    border: 1px ;
+    padding: 10px;
+    border-radius: 5px;
+    
+  }
+  .container:hover {
+    background-color:lightslategrey;
+  }
+
+.password-container {
+  position:relative;
+  
+}
+
+#password {
+  padding-right: 10px; 
+}
+
+.password-info {
+  position:absolute;
+  cursor: help;
+}
+input[type=submit]:hover {
+  background-color:darkcyan;
+}
+
+
+</style>
+</head>
+<body>
+
+
+<div class="container">
+  <h1><b>WELCOME TO REGISTRATION</b></h1>
+  <form id="registrationForm">
+    <label for="username">Enter Your UserName</label>
+    <input type="text" id="username" name="username" placeholder="Enter your username">
+    <label for="firstName">FirstName</label>
+    <input type="text" id="firstName" name="firstName" placeholder="Enter your first name">
+    <label for="lastName">LastName</label>
+    <input type="text" id="lastName" name="lastName" placeholder="Enter your last name">
+    <div class="password-container">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password">
+      <span class="password-info" title="Password should be entered">&#9432;</span>
+    </div>
+    <input type="radio" id="male" name="gender" value="Male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="Female">
+    <label for="female">Female</label><br>
+    <label for="dob">Date of Birth</label>
+    <input type="date" id="dob" name="dob" placeholder="Enter your date of birth"> <br> <br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <div id="userData"></div>
+</div>
+
+
+<script>
+var form = document.getElementById('registrationForm');// get the information in registrationform//
+var userDataDiv = document.getElementById('userData');//user data displayed //
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  var username = document.getElementById('username').value;//get the value username
+  var firstName = document.getElementById('firstName').value;//get the value firstname
+  var lastName = document.getElementById('lastName').value;//get the value lastname
+  var password = document.getElementById('password').value;//get the value password
+  var gender = document.querySelector('input[name="gender"]:checked').value;// match the first child element and check the gender is selected
+  var dob = document.getElementById('dob').value;//get the value dob
+
+   var userData = `
+    <h2>Registered User Data:</h2>
+    <p><strong>Username:</strong> ${username}</p>  
+    <p><strong>First Name:</strong> ${firstName}</p>
+    <p><strong>Last Name:</strong> ${lastName}</p>
+    <p><strong>Password:</strong> ${password}</p>
+    <p><strong>Gender:</strong> ${gender}</p>
+    <p><strong>Date of Birth:</strong> ${dob}</p>
+  `;
+  
+  userDataDiv.innerHTML = userData;// display the html content
+});
+
+</script>
+
+</body>
+</html>

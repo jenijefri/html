@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable</title>
+    
+    <style>
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 5px solid #cccccc;
+        }
+         th,td {
+            border: 5px solid #ddd;
+            padding :8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        img {
+            border-radius: 50%;
+        }
+        
+    </style>
+    </head>
+    <body>
+        <table>
+            
+                
+              
+                <tr>
+                   
+
+                    <th colspan="9" style="text-align: center;">Peace on Green Earth School <img src="C:\Users\HP\OneDrive\htmlpratice\html\image folder\Screenshot 2024-04-10 123811.png"width="40"height="20"  alt="logo" style="float:inherit;"></th>
+                   
+                
+                </tr>
+            
+            
+             
+             <tr>
+                <th colspan="9"  style="text-align: center;"> Class Time Table -2024-2025</th>
+                
+             </tr>
+             
+             <tr>  
+                <div>      
+            
+                    <th colspan="8" style="text-align: left;">Class:I-B <th colspan="8" style="text-align: right;">Class Teacher :<label id ="demo1">Mrs SHEELA</label></th></th> 
+                       
+                         </div>
+            
+                         
+             </tr>
+             
+             <tr>
+                <th>periods<br>days</th>
+            
+                <th>   1   </th>
+                <th>2 </th>
+                <th rowspan="2">10:20am<br>-<br>10:30am</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                
+             </tr>
+             <th>
+                <th>9:00am<br>-<br>9.40am  </th>
+                <th> 9:40am<br>-<br>10-20am</th>
+                <th>10:30am<br>-<br>11:10am</th>
+                <th>11:10am<br>-<br>11:50am</th>
+                <th>11:50am<br>-<br>12:30pm</th>
+                <th>12:30pm<br>-<br>1:00pm</th>
+                <th>1:40pm<br>-<br>2:20pm</th>
+             </th>
+             
+             <tr>
+                <td>Monday</td>
+                <td>English</td>
+                <td>Yoga</td>
+                <td rowspan="3"> B<br>  R<br> E <br> A <br> K </td>
+                <td>Tamil</td>
+                <td>
+                    <abbr title="Environmental Science">E.V.S</abbr>
+                </td>
+                <td>Hindi</td>
+                <td rowspan="3" > L<br> U<br> N<br> C <br> H </td>
+                <td  rowspan ="3" > P <br> E <br> T</td>
+             </tr>
+             <tr>
+                <td>Tuesday</td>
+                <td>English</td>
+                <td>Tamil</td>
+                <td>Music</td>
+                <td>
+                    <abbr title="Environmental Science">E.V.S</abbr>
+                    
+                </td>
+                <td>
+                  <abbr title="Physical Education"> PET</abbr>    
+                </td>
+             </tr>
+             <tr>
+                <td>Wednesday</td>
+                <td>English</td>
+                <td>Tamil</td>
+                <td>
+                    <abbr title="Environmental Science">E.V.S</abbr>
+                </td>
+                <td>Music</td>
+                <td>
+                    <abbr title="General Knowledge">G.K</abbr>
+                </td>
+             </tr>
+             
+    
+       
+            
+            </table>
+            <p style="font-size: larger;"> Change the class teacher name</p>
+            <form>
+                <label for="nameField">Enter your name:</label>
+                  <input type="text" id="nameField" name="name"><br>
+                  <input type="radio" id="Mrs" name="options" value="Mrs">
+                <label for="Mrs">Mrs</label><br>
+             <input type="radio" id="Miss" name="options" value="Miss">
+            <label for="Miss">Miss</label><br>             
+            </form>        
+            <script>
+            function myfunctions(){
+            var radios = document.getElementsByName('options');
+            var selectedValue = '';
+
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    selectedValue = radios[i].value;
+                    break;
+                }
+            }
+
+            if (selectedValue === '') {
+                alert("please select an option");
+            }   
+        document.getElementById("demo1").textContent=selectedValue+'.'+document.getElementById ("nameField").value;;
+
+            }
+
+            </script>
+            
+            <button type="Submit" onclick="myfunctions()"> Submit</button>
+            <button type="reset" >reset</button><br><br>
+
+            <form>
+                <label for="selectsubject">Select Subject</label> 
+                <input type="text" id="textInput"><br>
+            
+                <label for="colorSelect">Select color:</label>
+                <select id="colorSelect">
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                    <option value="pink">Pink</option>
+                    <option value="yellow">yellow</option>
+                </select>
+                </form>
+                <button  type="changecolor" onclick="changeColor()">Change Color</button>
+                <button type="reset">Reset</button>
+                
+            
+            
+                <script>
+                            function changeColor() {
+    var subject = document.getElementById("textInput").value; // the text inout are store in subject
+    var colorSelect = document.getElementById("colorSelect").value; // Get the selected color
+    
+
+    if (subject === '') {
+        alert("Please enter a subject.");// the subject text field is empty click submit button the alert message is displayed//
+        return;
+    }
+
+    var table = document.querySelector("table");//first child element match the specific css//
+    var cells = table.getElementsByTagName("td");//table data are searched//
+
+    for (var i = 0; i < cells.length; i++) {
+        if (cells[i].textContent === subject) { // Check if the text content of the cell matches the entered subject
+            cells[i].style.color = colorSelect; // Apply the selected color to the cell containing the subject
+        }
+    }
+}
+                </script>
+            </body>
+            </html>
+            

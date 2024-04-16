@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabbed Interface</title>
+</head>
+<style>
+  body{
+    border-image: lightcoral;
+  }
+    /* Style the tab content */
+.tabcontent {
+  
+      display: none;
+      padding: 20px;
+      border: 5px solid black;
+    }
+
+/* Style the buttons that are used to open the tab content */
+.tablinks {
+  background-color:violet;
+  border: 50px black;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.tablinks:hover {
+  background-color:pink;
+}
+
+/* Style the active tab */
+.active {
+  background-color:yellowgreen;
+}
+
+</style>
+<body>
+  <div class="tabs">
+    <button class="tablinks" onclick="openTab(event, 'tab1')">Tab 1</button>
+    <button class="tablinks" onclick="openTab(event, 'tab2')">Tab 2</button>
+    <button class="tablinks" onclick="openTab(event, 'tab3')">Tab 3</button>
+  </div>
+
+  <div id="tab1" class="tabcontent">
+    <h1>Tab 1 Content</h1>
+    <h3>Summer Season</h3>
+    <p>The summer season is one of the main seasons in a tropical country like India. Summer sets in April and continues up to the end of July. Summer is usually associated with hot, dry weather. The days are longer, and the nights are shorter during this season.</p>
+  </div>
+
+  <div id="tab2" class="tabcontent">
+    <h1>Tab 2 Content</h1>
+    <h3>Rainy Season</h3>
+    <p>The rainy season changes the atmosphere of the surroundings. The temperature gets lower and the environment becomes cool. The rainfall increases the water level in the rivers and lakes so that animals can use this water for drinking. The soil soaks the rainwater which plants use to convert solar energy into nutrition</p>
+  </div>
+
+  <div id="tab3" class="tabcontent">
+    <h1>Tab 3 Content</h1>
+    <h3>Winder Season</h3>
+    <p>Winter season comes when earth tilted away from sun. It is the season of health making however bad for trees and plants as they stop growing. Many animals hibernate during this season because of unbearable cold weather. Snow falling and winter storm are very common during this season.</p>
+  </div>
+  <script>
+  function openTab(evt, tabName) {
+  // Hide all tab content
+  var tabcontent = document.querySelectorAll('.tabcontent');
+  tabcontent.forEach(function(tab) {
+    tab.style.display = 'none';
+  });
+
+  // Remove 'active' class from all tab links
+  var tablinks = document.querySelectorAll('.tablinks');
+  tablinks.forEach(function(link) {
+    link.classList.remove('active');
+  });
+
+  // Display the clicked tab content and add 'active' class to the clicked tab link
+  document.getElementById(tabName).style.display = 'block';
+  evt.currentTarget.classList.add('active');
+}     // when a tab is clicked, 
+         //it hides all other tab contents, removes the "active" class from all tab buttons,
+         /// displays the content of the clicked tab, and marks the clicked tab button as active.
+</script>
+  
+</body>
+</html>
