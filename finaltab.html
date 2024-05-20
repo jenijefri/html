@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabbed Layout</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin:0;
+        padding:0;
+    }
+    .tabs {
+        display:flex; /* allow to set the length of flexible item*/
+        padding: 0;
+        margin: 0;
+      
+    }
+    
+    .tab {
+        flex:1;
+        text-align: center;
+        background-color: aqua;
+        border: 2px solid black;
+        
+        background-color: greenyellow;
+    }
+    .tab:hover {
+        background-color:pink;
+    }
+    .tab.active {
+        background-color:gray;
+    }
+    .tab-content {
+        display:none;/* all content is diplayed  in tab1*/
+        padding: 20px;
+    }
+    .tab-content.active {
+        display:block; /* all tab content are empty*/
+    }
+</style>
+</head>
+<body>
+    <div class="tabs">
+        <div class="tab active" onclick="changeTab(0)">Tab 1</div>
+        <div class="tab" onclick="changeTab(1)">Tab 2</div>
+        <div class="tab" onclick="changeTab(2)">Tab 3</div>
+    </div>
+    <div class="tab-content " style="text-size-adjust: 18;"><pre><b> The summer season is one of the main seasons in a tropical country like India. Summer sets in April and continues up to the end of July.                                                                             
+      Summer is usually associated with hot, dry weather. 
+      The days are longer, and the nights are shorter during this season.</b></pre></div>
+    <div class="tab-content" style="text-size-adjust: 18;"><pre><b> The rainy season changes the atmosphere of the surroundings. 
+      The temperature gets lower and the environment becomes cool. 
+      The rainfall increases the water level in the rivers and lakes so that animals can use this water for drinking. 
+      The soil soaks the rainwater which plants use to convert solar energy into nutrition.</b></pre></div></div>
+    <div class="tab-content" style="text-size-adjust: 18;"><pre><b> Winter is one of the most important seasons in India. 
+      It is a part of the four seasons that occur in India. 
+      Winters are the coolest season that starts from December and last till March.
+       The peak time when winter is experienced the most in December and January.</b></pre></div></div>
+
+    <script>
+        function changeTab(index) { // function statement used
+            var tabs = document.querySelectorAll('.tab');     //to select all elements with the class .tab and .tab-content respectively and store them in variables tabs and tabContents.
+            var tabContents = document.querySelectorAll('.tab-content');//return the first child element match the specific css selector
+
+            tabs.forEach((tab, i) => { // tab ->is a represented current tab element  i-> represented the index
+                if (i === index) { // i match the index passed chngetab the tab should be active
+                    tab.classList.add('active');
+                    tabContents[i].classList.add('active'); // corresponding content tab is active
+                } else {
+                    tab.classList.remove('active');
+                    tabContents[i].classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+ArrayList<String> books = new ArrayList<>();
+    books.add("Book1");
+    books.add("Book2");
+    books.add("Book3");
+    
+    // Find the index of the element you want to replace
+    int index = books.indexOf("Book2");
+    
+    // Check if the element exists in the ArrayList
+    if (index != -1) {
+        // Replace the element at the found index
+        books.set(index, "NewBook");
+    } else {
+        System.out.println("Element not found in the list.");
+    }
+    
+    // Print the ArrayList after replacement
+    System.out.println(books);
+    

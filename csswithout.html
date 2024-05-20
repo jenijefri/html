@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Code Without CSS</title>
+</head>
+<body>
+    <div id="codeContainer"></div>
+
+    <script>
+        // Sample code to display
+        var code = `
+            function greet() {
+                console.log("Hello, world!");
+            }
+            
+            greet();
+        `;
+
+        // Create a <code> element to hold the code
+        var codeElement = document.createElement('code');
+
+        // Set the text content of the <code> element to the code
+        codeElement.textContent = code;
+
+        // Append the <code> element to the code container
+        document.getElementById('codeContainer').appendChild(codeElement);
+    </script>
+</body>
+</html>

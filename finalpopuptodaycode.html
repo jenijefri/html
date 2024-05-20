@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popup Message</title>
+  <style>
+    /* Popup container */
+    .popup {
+  display: none; /* Hidden by default */
+  width: 80%;
+  background-color: pink; /* Background color */
+  padding: 20px; /* Padding */
+  box-sizing: border-box; /* Include padding in width/height */
+  margin-left: 80px;
+  margin-top: 300px;;
+}
+
+.popup-content {
+  padding: 20px; /* Padding for content */
+  font-weight: bold; /* Bold text */
+  text-align: center; /* Center text */
+}
+
+
+    /* Close button */
+    .close {
+      float: inline-end ;
+      font-size: 30px;
+      color: black;
+      
+    }
+    
+    
+  </style>
+</head>
+<body>
+  
+ 
+
+
+<!-- Button to trigger the popup -->
+<button id="myButton" onclick="showPopup()">Click Me</button>
+
+<!-- The Modal -->
+<div id="popupModal" class="popup">
+
+  <!-- Popup content -->
+  <div class="popup-content">
+    <span class="close" onclick="closePopup()">&times;</span> <!-- Multiplication symbol --> 
+      <p> welcome to html</p>
+  </div>
+
+</div>
+
+<script>
+  // Function to display the popup
+  function showPopup() {
+    var modal = document.getElementById("popupModal");
+    modal.style.display = "block";
+  }
+
+  // Function to close the popup
+  function closePopup() {
+    var modal = document.getElementById("popupModal");
+    modal.style.display = "none";
+  }
+</script>
+</body>
+</html>

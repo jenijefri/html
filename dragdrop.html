@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Upload</title>
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .upload-btn {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Add Document</h1>
+  <input type="file" id="file-input" style="display: none;" multiple>
+  <label for="file-input" class="upload-btn">Drag and Drop or Click to Upload</label>
+  <div id="file-list"></div>
+</div>
+
+<script>
+  document.getElementById('file-input').addEventListener('change', handleFileSelect);
+
+  function handleFileSelect(event) {
+    const fileList = event.target.files;
+    const fileListContainer = document.getElementById('file-list');
+
+    fileListContainer.innerHTML = ''; // Clear previous files
+
+    for (const file of fileList) {
+      const fileItem = document.createElement('div');
+      fileItem.textContent = file.name;
+      fileListContainer.appendChild(fileItem);
+    }
+  }
+</script>
+
+</body>
+</html>

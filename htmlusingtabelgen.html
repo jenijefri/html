@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Tables</title>
+</head>
+<body>
+    <h1>Multiplication Tables</h1>
+    <label>Enter the table number:</label>
+    <input type="text" id="tableNumbersInput" ><br>
+    <label>Enter the table count:</label>
+    <input type="text" id="tableCountsInput" ><br>
+    <button onclick="generateTables()">Generate Tables</button>
+    <div id="tablesOutput"></div>
+
+    <script>
+        function generateTables() {
+            var tableNumbersInput = document.getElementById('tableNumbersInput').value;
+            var tableCountsInput = document.getElementById('tableCountsInput').value;
+            
+            var tableNumbers = tableNumbersInput.split(',').map(Number);
+            var tableCounts = tableCountsInput.split(',').map(Number);
+            
+            var outputDiv = document.getElementById('tablesOutput');
+            outputDiv.innerHTML = ''; // Clear previous output
+            
+            tableNumbers.forEach((tableNumber, i) => {
+                var tableCount = tableCounts[i];
+                
+                var tableDiv = document.createElement('div');
+                tableDiv.innerHTML = `<h2>Multiplication table for table ${tableNumber}:</h2>`;
+                
+                for (let j = 0; j <= tableCount; j++) {
+                    const p = document.createElement('p');
+                    p.textContent = `${tableNumber} * ${j} = ${tableNumber * j}`;
+                    tableDiv.appendChild(p);
+                }
+                
+                outputDiv.appendChild(tableDiv);
+            });
+        }
+    </script>
+</body>
+</html>

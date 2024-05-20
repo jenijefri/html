@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Tables</title>
+</head>
+<body>
+    <h1>Multiplication Tables</h1>
+    <script >
+  // Prompt the user to enter table number and count
+var tableNumbersInput = prompt("Enter the table number (separated by comma)");
+var tableCountsInput = prompt("Enter the table count (separated by comma)");
+
+// Split the input strings into arrays and convert them to numbers
+const tableNumbers = tableNumbersInput.split(',').map(Number);
+const tableCounts = tableCountsInput.split(',').map(Number);
+
+// Function to generate tables
+function generateTables() {
+    const outputDiv = document.getElementById('tablesOutput');
+    outputDiv.innerHTML = ''; // Clear previous output
+    
+    tableNumbers.forEach((tableNumber, i) => {
+        const tableCount = tableCounts[i];
+        
+        const tableDiv = document.createElement('div');
+        tableDiv.innerHTML = `<h2>Multiplication table for table ${tableNumber}:</h2>`;
+        
+        for (let j = 0; j <= tableCount; j++) {
+            const p = document.createElement('p');
+            p.textContent = `${tableNumber} * ${j} = ${tableNumber * j}`;
+            tableDiv.appendChild(p);
+        }
+        
+        outputDiv.appendChild(tableDiv);
+    });
+}
+
+// Call the function to generate tables
+generateTables();
+</script>
+</body>
+</html>

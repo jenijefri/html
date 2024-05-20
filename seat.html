@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Booking</title>
+    <style>
+        .seat {
+            width: 50px;
+            height: 50px;
+            border: 2px solid black;
+            display: inline-block;
+            margin: 5px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+        }
+
+        .booked {
+            background-color: green;
+        }
+
+        .selected {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="seats"></div>
+    <br>
+    Passenger Name: <input type="text" id="passengerName">
+    <br>
+    Seat Number: <input type="text" id="seatNumber">
+    <button onclick="bookSeat()">Book Seat</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var seatsContainer = document.getElementById('seats');
+            var totalSeats = 10;
+            let seats = new Array(totalSeats).fill(false);
+
+            function renderSeats() {
+                seatsContainer.innerHTML = '';
+                seats.forEach((isBooked, index) => {
+                    var seat = document.createElement('div');
+                    seat.className = 'seat';
+                    if (isBooked) {
+                        seat.classList.add('booked');
+                    } else {
+                        seat.classList.add('selected');
+                    }
+                    seat.textContent = index + 1;
+                    seat.addEventListener('click', () => {
+                        if (!isBooked) {
+                            bookSeat(index + 1);
+                        } else {
+                            alert('This seat is already booked!');
+                        }
+                    });
+                    seatsContainer.appendChild(seat);
+                });
+            }
+
+            renderSeats();
+        });
+
+        function bookSeat(seatNumber) {
+            var passengerName = document.getElementById('passengerName').value;
+            if (isNaN(seatNumber) || seatNumber < 1 || seatNumber > 10) {
+                alert('Please enter a valid seat number (1-10).');
+                return;
+            }
+            var index = seatNumber - 1;
+            if (seats[index]) {
+                alert('This seat is already booked!');
+            } else {
+                seats[index] = true;
+                renderSeats();
+                alert('Ticket booked for ' + passengerName + ' at seat number ' + seatNumber);
+            }
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seat Booking</title>
+    <style>
+        .seat {
+            width: 50px;
+            height: 50px;
+            border: 2px solid black;
+            display: inline-block;
+            margin: 5px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+        }
+
+        .booked {
+            background-color: green;
+        }
+
+        .selected {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="seats"></div>
+    <br>
+    Passenger Name: <input type="text" id="passengerName">
+    <br>
+    Seat Number: <input type="text" id="seatNumber">
+    <button onclick="bookSeat()">Book Seat</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var seatsContainer = document.getElementById('seats');
+            var totalSeats = 10;
+            let seats = new Array(totalSeats).fill(false);
+
+            function renderSeats() {
+                seatsContainer.innerHTML = '';
+                seats.forEach((isBooked, index) => {
+                    var seat = document.createElement('div');
+                    seat.className = 'seat';
+                    if (isBooked) {
+                        seat.classList.add('booked');
+                    } else {
+                        seat.classList.add('selected');
+                    }
+                    seat.textContent = index + 1;
+                    seat.addEventListener('click', () => {
+                        if (!isBooked) {
+                            bookSeat(index + 1);
+                        } else {
+                            alert('This seat is already booked!');
+                        }
+                    });
+                    seatsContainer.appendChild(seat);
+                });
+            }
+
+            renderSeats();
+        });
+
+        function bookSeat(seatNumber) {
+            var passengerName = document.getElementById('passengerName').value;
+            if (isNaN(seatNumber) || seatNumber < 1 || seatNumber > 10) {
+                alert('Please enter a valid seat number (1-10).');
+                return;
+            }
+            var index = seatNumber - 1;
+            if (seats[index]) {
+                alert('This seat is already booked!');
+            } else {
+                seats[index] = true;
+                renderSeats();
+                alert('Ticket booked for ' + passengerName + ' at seat number ' + seatNumber);
+            }
+        }
+    </script>
+</body>
+</html>

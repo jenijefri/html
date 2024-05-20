@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Title Bar with Toggle Content</title>
+<style>
+    body {
+        font-family:'Times New Roman', Times, serif;
+        margin: 0;
+        padding: 0;
+        background-color: lightgray;
+    }
+    .title-bar {
+        background-color:aquamarine;
+        padding: 10px;
+        cursor: pointer;
+        align-items: center;
+        display:flex;
+
+    }
+    .title {
+        flex:1;/*allow to set the flexible item*/
+        color: black;
+    }
+    .triangle {
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid black;
+    }
+    .content {
+        display: block;
+        padding: 20px;
+        font-family: 'Times New Roman', Times, serif;
+       font-size: large;
+    
+    
+    }
+    .hidden {
+        display: none;
+    }
+</style>
+</head>
+<body>
+    <div class="title-bar" onclick="paragraph()">
+        <div class="title">PARAGRAPH</div>
+        <div class="triangle"></div>
+    </div>
+    <div class="content" id="content">
+        
+        <pre><b><i>A paragraph is a collection of words combined together to make a longer unit than a sentence.
+ It's a set of sentences that are well-organized and coherent, and they're all about the same thing. 
+ Several sentences often make up a paragraph.
+There are normally three to eight sentences in a paragraph.</i></b></pre>
+    </div>
+
+    <script>
+        function paragraph() {
+            var content = document.getElementById("content");
+            content.classList.toggle("hidden");// switch in two state on/off state//
+        }
+    </script>
+</body>
+</html>
+

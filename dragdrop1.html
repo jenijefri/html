@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Upload</title>
+  <style>
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .upload-btn {
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .upload-btn:hover {
+      background-color: #0056b3;
+    }
+    #file-list {
+      margin-top: 20px;
+    }
+    .file-item {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Add Document</h1>
+  <label for="file-input" class="upload-btn">Drag and Drop or Click to Upload</label>
+  <input type="file" id="file-input" style="display: none;" multiple>
+  <div id="file-list"></div>
+</div>
+
+<script>
+  const dropArea = document.querySelector('.upload-btn');
+
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, preventDefaults, false);
+    document.body.addEventListener(eventName, preventDefaults, false);
+  });
+
+  function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  dropArea.addEventListener('drop', handleDrop, false);
+
+  function handleDrop(e) {
+    const fileList = e.dataTransfer.files;
+    const fileListContainer = document.getElementById('file-list');
+
+    fileListContainer.innerHTML = ''; // Clear previous files
+
+    for (const file of fileList) {
+      const fileItem = document.createElement('div');
+      fileItem.textContent = file.name;
+      fileItem.classList.add('file-item');
+      fileListContainer.appendChild(fileItem);
+    }
+  }
+
+  document.getElementById('file-input').addEventListener('change', handleFileSelect);
+
+  function handleFileSelect(event) {
+    const fileList = event.target.files;
+    const fileListContainer = document.getElementById('file-list');
+
+    fileListContainer.innerHTML = ''; // Clear previous files
+
+    for (const file of fileList) {
+      const fileItem = document.createElement('div');
+      fileItem.textContent = file.name;
+      fileItem.classList.add('file-item');
+      fileListContainer.appendChild(fileItem);
+    }
+  }
+</script>
+
+</body>
+</html>

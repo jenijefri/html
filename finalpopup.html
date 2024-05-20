@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popup Message</title>
+  <style>
+    /* Popup container */
+    .popup {
+      display: none; /* Hidden by default */
+      position: fixed; /* Position it on top of the page content */
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      background-color:aliceblue; /* Black background with opacity */
+      z-index: 999; /* Sit on top */
+      
+    }
+
+    /* Popup content */
+    .popup-content {
+      background-color:antiquewhite;
+      margin: 15% auto; /* 15% from the top and centered */
+      padding: 20px;
+      border: 2px black;
+      width: 80%; /* 80% width */
+    }
+
+    /* Close button 
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }*/
+    .close:hover,
+    .close:focus {
+      color:lightcyan;
+      text-decoration: none;
+      cursor: pointer;
+
+     
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <!-- Textarea with scrollbars -->
+    <textarea name="message">
+        <p> Election is the process through which people can express their political opinion.
+        They express this opinion by public voting to choose a political leader.
+        Furthermore, this political leader would have authority and responsibility. 
+        Most noteworthy, Election is a formal group decision making the process.<p>
+        
+    </textarea>
+</form>
+<!-- The Modal -->
+<div id="popupModal" class="popup">
+
+  <!-- Popup content -->
+  <div class="popup-content">
+    <button class="close" onclick="closePopup()">close</button> 
+    <p>The text area is display</p>
+  </div>
+
+</div>
+
+<!-- Button to trigger the popup -->
+<button id="myButton" onclick="showPopup()">Click Me</button>
+
+<script>
+  // Function to display the popup
+  function showPopup() {
+    var modal = document.getElementById("popupModal");
+    modal.style.display = "block";
+
+  }
+
+  // Function to close the popup
+  function closePopup() {
+    var modal = document.getElementById("popupModal");
+    modal.style.display = "none";
+
+  }
+  
+</script>
+
+</body>
+</html>
+
+
+

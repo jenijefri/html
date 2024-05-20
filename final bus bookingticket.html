@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Booking</title>
+    <style>
+        /* Styles for the bus layout */
+        .bus {
+            display: flex;
+            flex-wrap: wrap;
+            width: 500px; /* Adjust width as needed */
+        }
+
+        .seat {
+            width: 50px;
+            height: 50px;
+            border: 2px solid black;
+            margin: 5px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+            user-select: none;
+            background-color: green;
+        }
+
+        .booked {
+            background-color:red;
+            cursor: not-allowed;
+        }
+
+        /* Styles for the form */
+        #booking-form {
+            margin-top: 20px;
+        }
+
+        #booking-form input[type="text"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Bus Seating Arrangement</h2>
+    <div id="bus" class="bus"></div>
+    <form id="booking-form">
+        <label for="passengerName">Passenger Name:</label>
+        <input type="text" id="passengerName" required>
+        <label for="seatNumber">Seat Number:</label>
+        <input type="number" id="seatNumber" min="1" max="40" required>
+        <button type="submit">Book Seat</button>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const busContainer = document.getElementById('bus');
+            const totalSeats = 10; // Total number of seats
+            const seats = new Array(totalSeats).fill(false); // Initialize all seats as available
+
+            // Render bus seating arrangement
+            function renderBus() {
+                busContainer.innerHTML = '';
+                for (let i = 0; i < totalSeats; i++) {
+                    const seat = document.createElement('div');
+                    seat.className = 'seat';
+                    seat.textContent = i + 1;
+                    if (seats[i]) {
+                        seat.classList.add('booked');
+                    } else {
+                        seat.addEventListener('click', () => bookSeat(i + 1));
+                    }
+                    busContainer.appendChild(seat);
+                }
+            }
+
+            // Book a seat
+            function bookSeat(seatNumber) {
+                const passengerName = document.getElementById('passengerName').value;
+                if (seats[seatNumber - 1]) {
+                    alert('This seat is already booked!');
+                } else {
+                    seats[seatNumber - 1] = true;
+                    renderBus();
+                    alert(`Ticket booked for ${passengerName} at seat number ${seatNumber}`);
+                }
+            }
+
+            // Handle form submission
+            document.getElementById('booking-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const seatNumber = parseInt(document.getElementById('seatNumber').value);
+                if (isNaN(seatNumber) || seatNumber < 1 || seatNumber > totalSeats) {
+                    alert(`Please enter a valid seat number (1-${totalSeats}).`);
+                    return;
+                }
+                bookSeat(seatNumber);
+            });
+
+            // Initial rendering of the bus
+            renderBus();
+        });
+    </script>
+</body>
+</html>

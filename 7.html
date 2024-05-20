@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popup Message</title>
+  <style>
+    /* Popup container */
+    .popup {
+      display: none; /* Hidden by default */
+      position: fixed; /* Position it on top of the page content */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      background-color: grey;
+    }
+
+    /* Popup content */
+    .popup-content {
+      background-color: white;
+      margin: 15% auto; /* 15% from the top and centered */
+      padding: 10px;
+      border: 3px solid black;
+      width: 80%; /* 80% width */
+      text-align: center;
+    }
+    .close {
+      color:black;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+    
+    <!-- Button to trigger the popup -->
+    <button id="myButton" onclick="showPopup()">Button</button> 
+    <script>
+    // Function to display the popup
+      function showPopup() {
+        console.log("showPopup function called"); //console statement
+        var modal = document.getElementById("popupModal");
+        modal.style.display= "block"; 
+        // Hide the button
+        document.getElementById("myButton").style.display = "none"; 
+        console.log("button hidden");
+      }
+
+    </script>
+    <!-- Popup container -->
+    <div class="popup" id="popupModal">
+      <!-- Popup content -->
+      <div class="popup-content">
+        <div class="close" onclick="closePopup()">&times;</div> <!-- Multiplication symbol --> 
+        <p>Welcome To HTML</p>
+      </div>
+    </div>
+
+<script>
+  
+  // Function to close the popup
+  function closePopup() {
+
+    var modal = document.getElementById("popupModal");
+    modal.style.display= "none";
+    // Show the button when the popup is closed
+    var button = document.getElementById("myButton");
+    button.style.display = "block";
+  }
+</script>
+</body>
+</html>

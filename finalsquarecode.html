@@ -1,40 +1,130 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>new Colorful Boxes</title>
-    <style>
-        .container {
-            justify-content: center;
-            align-items: center;
-            height: 100PX;
-        }
-        
-        .box {
-            border: 3px solid black;
-            border-radius: 1px;
-            text-align: center;
-            padding: 30px;
-            margin: 20px;
-            
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable</title>
     
+    <style>
+        /* Your CSS styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 5px solid #cccccc;
+        }
+         th,td {
+            border: 5px solid #ddd;
+            padding :8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        img {
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="box" style="background-color: red; width: 480px; height: 460px;">
-            <p><b>Jefrina</b></p>
-            <div class="box" style="background-color:blue; width: 380px; height: 330px">
-                <p><b>Jenitta</b></p>
-                <div class="box" style="background-color: green; width: 280px; height: 210px">
-                    <p><b>Pappa</b></p>
-                    <div class="box" style="background-color: yellow; width: 180px; height: 50px">
-                        <p><b>Packia Raj</b></p>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Class selection -->
+    <form>
+        <label for="classSelect">Select Class:</label>
+        <select id="classSelect" onchange="showTimetable()">
+            <option value="1A">Class 1A</option>
+            <option value="1B">Class 1B</option>
+            <option value="1C">Class 1C</option>
+            <!-- Add more options as needed -->
+        </select>
+    </form>
+    
+    <!-- Timetable -->
+    <table id="timetable">              
+        <tr>
+            <th colspan="9" style="text-align: center;">Peace on Green Earth School <img src="C:\Users\HP\OneDrive\htmlpratice\html\image folder\Screenshot 2024-04-10 123811.png" width="40" height="20" alt="logo" style="float:inherit;"></th>
+        </tr>
+        <tr>
+            <th colspan="9"  style="text-align: center;"> Class Time Table -2024-2025</th>
+        </tr>
+        <tr>
+            <th colspan="8" style="text-align: left;">Class:I-A</th>
+            <th colspan="1" style="text-align: right;">Class Teacher: <label id="demo1">Mrs SHEELA</label></th>
+        </tr>
+        <tr>
+            <th>Periods<br>Days</th>
+            <th>1</th>
+            <th>2</th>
+            <th rowspan="2">10:20am<br>-<br>10:30am</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+        </tr>
+        <tr>
+            <th>Time</th>
+            <th>9:00am<br>-<br>9:40am</th>
+            <th>9:40am<br>-<br>10-20am</th>
+            <th>10:30am<br>-<br>11:10am</th>
+            <th>11:10am<br>-<br>11:50am</th>
+            <th>11:50am<br>-<br>12:30pm</th>
+            <th>12:30pm<br>-<br>1:00pm</th>
+            <th>1:40pm<br>-<br>2:20pm</th>
+        </tr>
+        <tr>
+            <td>Monday</td>
+        </tr>
+        <tr>
+            <td>Tuesday</td>
+        </tr>
+        <tr>
+            <td>Wednesday</td>
+        </tr>            
+    </table>
+ 
+    <script>
+        // Define timetables for each class
+        var timetable = {
+            "1A": [
+                ["English", "Tamil", "Yoga", "Music", "G.K"],
+                ["Tamil", "English", "Music", "Yoga", "G.K"],
+                ["Maths", "English", "Yoga", "G.K", "Yoga"]
+            ],
+            "1B": [
+                ["English", "Yoga", "Yoga", "Tamil", "G.K"],
+                ["Tamil", "Evs", "Music", "Yoga", "G.K"],
+                ["Maths", "English", "Yoga", "Maths", "Yoga"]
+            ],
+            "1C": [
+                ["English", "Tamil", "Yoga", "Music", "G.K"],
+                ["Tamil", "English", "Music", "Yoga", "G.K"],
+                ["Maths", "English", "Yoga", "G.K", "Yoga"]
+            ],
+            // Add more timetables as needed
+        };
+    
+        function showTimetable() {
+            var selectedClass = document.getElementById("classSelect").value;
+            var timetableData = timetable[selectedClass];
+            var timetableTable = document.getElementById("timetable");
+    
+            // Clear existing rows except the first two
+            while (timetableTable.rows.length > 2) {
+                timetableTable.deleteRow(2);
+            }
+    
+            // Create and populate table rows
+            timetableData.forEach(function(periods, index) {
+                var row = timetableTable.insertRow(index + 3); // Start inserting rows from the fourth row
+                var dayCell = row.insertCell(0);
+                dayCell.textContent = index === 0 ? "Monday" : index === 1 ? "Tuesday" : "Wednesday"; // Adjust as needed
+    
+                periods.forEach(function(subject, j) {
+                    var cell = row.insertCell(j + 1);
+                    cell.textContent = subject;
+                });
+            });
+        }
+    </script>
 </body>
 </html>
